@@ -15,9 +15,11 @@ menuBtn?.addEventListener("click", () => {
 });
 
 // Close menu on click
-qsa("#mobileMenu a").forEach(a => a.addEventListener("click", () => {
-  mobileMenu.setAttribute("hidden", "");
-}));
+qsa("#mobileMenu a").forEach(a =>
+  a.addEventListener("click", () => {
+    mobileMenu.setAttribute("hidden", "");
+  })
+);
 
 // ===== Theme toggle (persist) =====
 const themeBtn = qs("#themeBtn");
@@ -32,13 +34,15 @@ themeBtn?.addEventListener("click", () => {
 
 // ===== Reveal on scroll =====
 const revealEls = qsa(".reveal");
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
-  });
-}, { threshold: 0.12 });
-
-revealEls.forEach(el => io.observe(el));
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("show");
+    });
+  },
+  { threshold: 0.12 }
+);
+revealEls.forEach((el) => io.observe(el));
 
 // ===== Animated counters =====
 function animateCount(el, to) {
@@ -46,7 +50,7 @@ function animateCount(el, to) {
   const start = performance.now();
   const from = 0;
 
-  function tick(t){
+  function tick(t) {
     const p = Math.min(1, (t - start) / dur);
     const v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
     el.textContent = v.toString();
@@ -55,43 +59,56 @@ function animateCount(el, to) {
   requestAnimationFrame(tick);
 }
 
-const counterIO = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const to = Number(el.getAttribute("data-to") || "0");
-    if (el.dataset.done) return;
-    el.dataset.done = "1";
-    animateCount(el, to);
-  });
-}, { threshold: 0.5 });
+const counterIO = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const to = Number(el.getAttribute("data-to") || "0");
+      if (el.dataset.done) return;
+      el.dataset.done = "1";
+      animateCount(el, to);
+    });
+  },
+  { threshold: 0.5 }
+);
 
-qsa(".count").forEach(el => counterIO.observe(el));
+qsa(".count").forEach((el) => counterIO.observe(el));
 
 // ===== Skill bars animate when visible =====
-const barIO = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const span = e.target;
-    const val = span.getAttribute("data-bar");
-    if (!val || span.dataset.done) return;
-    span.dataset.done = "1";
-    span.style.width = `${val}%`;
-  });
-}, { threshold: 0.35 });
+const barIO = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const span = e.target;
+      const val = span.getAttribute("data-bar");
+      if (!val || span.dataset.done) return;
+      span.dataset.done = "1";
+      span.style.width = `${val}%`;
+    });
+  },
+  { threshold: 0.35 }
+);
+
+qsa(".bar span[data-bar]").forEach((el) => barIO.observe(el));
 
 // ===============================
-// FIXED IMAGE GALLERY (NO RENAME)
+// Gallery: 3x3 + Load More + Slider
 // ===============================
 
 const galleryGrid = document.getElementById("galleryGrid");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const lightboxTitle = document.getElementById("lightboxTitle");
 const lightboxTag = document.getElementById("lightboxTag");
 const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+const lightboxCounter = document.getElementById("lightboxCounter");
 
-// 👉 YOUR REAL IMAGES (AS-IS)
+// your images (no rename) — WhatsApp ones encoded for spaces
 const galleryImages = [
   { src: "gallery/Ba5.jpeg", title: "Business Analysis Work", tag: "Work" },
   { src: "gallery/ba3.jpeg", title: "Data Analysis Snapshot", tag: "Data" },
@@ -109,78 +126,151 @@ const galleryImages = [
   { src: "gallery/work_ny.jpeg", title: "Professional Moment", tag: "Life" },
   { src: "gallery/work_ny2.jpeg", title: "Work in Progress", tag: "Life" },
 
-  // WhatsApp images (kept as-is)
-  { src: "gallery/WhatsApp Image 2026-01-04 at 11.21.40 PM.jpeg", title: "Project Moment", tag: "Life" },
-  { src: "gallery/WhatsApp Image 2026-01-04 at 9.20.54 PM.jpeg", title: "Discussion Session", tag: "People" },
-  { src: "gallery/WhatsApp Image 2026-01-04 at 9.20.57 PM.jpeg", title: "Team Discussion", tag: "People" },
-  { src: "gallery/WhatsApp Image 2026-01-08 at 11.40.48 PM.jpeg", title: "Late Night Work", tag: "Work" }
+  { src: "gallery/WhatsApp%20Image%202026-01-04%20at%2011.21.40%20PM.jpeg", title: "Project Moment", tag: "Life" },
+  { src: "gallery/WhatsApp%20Image%202026-01-04%20at%209.20.54%20PM.jpeg", title: "Discussion Session", tag: "People" },
+  { src: "gallery/WhatsApp%20Image%202026-01-04%20at%209.20.57%20PM.jpeg", title: "Team Discussion", tag: "People" },
+  { src: "gallery/WhatsApp%20Image%202026-01-08%20at%2011.40.48%20PM.jpeg", title: "Late Night Work", tag: "Work" }
 ];
 
+// paging and state
+const PAGE_SIZE = 9;
+let visibleCount = PAGE_SIZE;
 let currentFilter = "All";
+
+let currentList = [];
+let currentIndex = 0;
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (m) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[m]));
+}
+
+function getFilteredList() {
+  return galleryImages.filter((img) => (currentFilter === "All" ? true : img.tag === currentFilter));
+}
 
 function renderGallery() {
   if (!galleryGrid) return;
 
-  const items = galleryImages.filter(img =>
-    currentFilter === "All" ? true : img.tag === currentFilter
-  );
+  currentList = getFilteredList();
+  const slice = currentList.slice(0, visibleCount);
 
-  galleryGrid.innerHTML = items.map((img, index) => `
-    <div class="gitem" data-index="${index}">
-      <img src="${img.src}" alt="${img.title}">
-      <div class="gmeta">
-        <div class="gtitle">${img.title}</div>
-        <div class="gtag">${img.tag}</div>
+  galleryGrid.innerHTML = slice
+    .map(
+      (img, idx) => `
+      <div class="gitem" data-idx="${idx}">
+        <img loading="lazy" src="${img.src}" alt="${escapeHtml(img.title)}">
+        <div class="gmeta">
+          <div class="gtitle">${escapeHtml(img.title)}</div>
+          <div class="gtag">${escapeHtml(img.tag)}</div>
+        </div>
       </div>
-    </div>
-  `).join("");
+    `
+    )
+    .join("");
 
-  document.querySelectorAll(".gitem").forEach(el => {
+  // click open
+  qsa(".gitem", galleryGrid).forEach((el) => {
     el.addEventListener("click", () => {
-      const img = items[el.dataset.index];
-      openLightbox(img);
+      const idx = Number(el.getAttribute("data-idx"));
+      openLightbox(idx);
     });
   });
+
+  // load more button show/hide
+  if (loadMoreBtn) {
+    loadMoreBtn.style.display = visibleCount >= currentList.length ? "none" : "inline-block";
+  }
 }
 
 function setupGalleryFilters() {
-  document.querySelectorAll(".gbtn").forEach(btn => {
+  qsa(".gbtn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".gbtn").forEach(b => b.classList.remove("active"));
+      qsa(".gbtn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      currentFilter = btn.dataset.filter;
+
+      currentFilter = btn.dataset.filter || "All";
+      visibleCount = PAGE_SIZE; // reset when filter changes
       renderGallery();
     });
   });
 }
 
-function openLightbox(img) {
-  lightboxImg.src = img.src;
-  lightboxTitle.textContent = img.title;
-  lightboxTag.textContent = img.tag;
+function openLightbox(idx) {
+  if (!lightbox) return;
+  currentList = getFilteredList();
+  currentIndex = idx;
+
+  updateLightbox();
   lightbox.classList.add("show");
+  lightbox.setAttribute("aria-hidden", "false");
+}
+
+function updateLightbox() {
+  const img = currentList[currentIndex];
+  if (!img) return;
+
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.title || "Gallery image";
+  lightboxTitle.textContent = img.title || "";
+  lightboxTag.textContent = img.tag || "";
+
+  if (lightboxCounter) {
+    lightboxCounter.textContent = `${currentIndex + 1} / ${currentList.length}`;
+  }
 }
 
 function closeLightbox() {
+  if (!lightbox) return;
   lightbox.classList.remove("show");
+  lightbox.setAttribute("aria-hidden", "true");
   lightboxImg.src = "";
 }
 
+function prevImage() {
+  if (!currentList.length) return;
+  currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+  updateLightbox();
+}
+
+function nextImage() {
+  if (!currentList.length) return;
+  currentIndex = (currentIndex + 1) % currentList.length;
+  updateLightbox();
+}
+
+// events
+loadMoreBtn?.addEventListener("click", () => {
+  visibleCount += PAGE_SIZE;
+  renderGallery();
+});
+
 lightboxClose?.addEventListener("click", closeLightbox);
-lightbox?.addEventListener("click", e => {
-  if (e.target.classList.contains("lightbox-backdrop")) closeLightbox();
+lightboxPrev?.addEventListener("click", prevImage);
+lightboxNext?.addEventListener("click", nextImage);
+
+lightbox?.addEventListener("click", (e) => {
+  if (e.target?.dataset?.close === "1") closeLightbox();
 });
-document.addEventListener("keydown", e => {
+
+document.addEventListener("keydown", (e) => {
+  if (!lightbox?.classList.contains("show")) return;
   if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") prevImage();
+  if (e.key === "ArrowRight") nextImage();
 });
 
-// INIT
-renderGallery();
-setupGalleryFilters();
-
-qsa(".bar span[data-bar]").forEach(el => barIO.observe(el));
+// init gallery if section exists
+if (galleryGrid) {
+  renderGallery();
+  setupGalleryFilters();
+}
 
 // ===== Replace LinkedIn link (set your real URL) =====
 const linkedin = qs("#linkedinLink");
 if (linkedin) linkedin.href = "https://www.linkedin.com/in/YOUR-LINK/";
-
