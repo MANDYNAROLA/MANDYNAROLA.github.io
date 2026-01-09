@@ -273,4 +273,9 @@ if (galleryGrid) {
 
 // ===== Replace LinkedIn link (set your real URL) =====
 const linkedin = qs("#linkedinLink");
-if (linkedin) linkedin.href = "https://www.linkedin.com/in/YOUR-LINK/";
+if (linkedin) {
+  linkedin.href = "https://www.linkedin.com/in/manthan-narola/";
+  linkedin.target = "_blank";
+}
+
+
