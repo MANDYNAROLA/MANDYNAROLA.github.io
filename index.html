@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manthan Narola | Business Analyst & IT Project Manager</title>
+  <meta name="description" content="Business Analyst & IT Project Manager — dashboards, automation, web platforms. SQL, Python, Excel, Power BI." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-orb orb1" aria-hidden="true"></div>
+  <div class="bg-orb orb2" aria-hidden="true"></div>
+
+  <header class="container">
+    <nav class="nav">
+      <a class="brand" href="#top" id="top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Manthan Narola</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+          <span class="icon" aria-hidden="true">◐</span>
+        </button>
+        <button class="icon-btn burger" id="menuBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="badge reveal">
+          <span class="dot" aria-hidden="true"></span>
+          Business Analyst • IT Project Manager • Data & Web
+        </div>
+
+        <h1 class="reveal">
+          Turning business requirements into
+          <span class="grad">dashboards</span>,
+          <span class="grad">automation</span>, and
+          <span class="grad">web platforms</span>.
+        </h1>
+
+        <p class="sub reveal">
+          Los Angeles, CA • SQL, Python, R, Excel, Power BI • UI/UX + Project Delivery
+        </p>
+
+        <div class="cta reveal">
+          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
+          <a class="btn ghost" href="https://github.com/MANDYNAROLA" target="_blank" rel="noopener">GitHub</a>
+          <!-- Replace with your real LinkedIn -->
+          <a class="btn ghost" href="#" id="linkedinLink" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+
+        <!-- KPI strip -->
+        <div class="kpis reveal">
+          <div class="kpi glass">
+            <div class="kpi-top">
+              <span class="kpi-label">Projects Delivered</span>
+              <span class="kpi-chip">Freelance</span>
+            </div>
+            <div class="kpi-value"><span class="count" data-to="5">0</span>+</div>
+            <div class="kpi-note">Dashboards • E-commerce • Workflow optimization</div>
+          </div>
+
+          <div class="kpi glass">
+            <div class="kpi-top">
+              <span class="kpi-label">Engagement Lift</span>
+              <span class="kpi-chip">Yatrim</span>
+            </div>
+            <div class="kpi-value"><span class="count" data-to="60">0</span>%</div>
+            <div class="kpi-note">Staging-phase increase during testing</div>
+          </div>
+
+          <div class="kpi glass">
+            <div class="kpi-top">
+              <span class="kpi-label">Internships</span>
+              <span class="kpi-chip">2023</span>
+            </div>
+            <div class="kpi-value"><span class="count" data-to="2">0</span></div>
+            <div class="kpi-note">Data Analyst • UI/UX + PHP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data-themed hero panel -->
+      <div class="hero-right reveal">
+        <div class="panel glass">
+          <div class="panel-head">
+            <div class="panel-title">Insight Dashboard</div>
+            <div class="panel-actions">
+              <span class="pill">Live</span>
+              <span class="pill outline">BA</span>
+              <span class="pill outline">BI</span>
+            </div>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-label">Data Prep</div>
+              <div class="mini-bar">
+                <span style="width:82%"></span>
+              </div>
+              <div class="mini-foot">SQL • Cleaning • Structuring</div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-label">Visualization</div>
+              <div class="mini-bar">
+                <span style="width:76%"></span>
+              </div>
+              <div class="mini-foot">Power BI • Excel Dashboards</div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-label">Delivery</div>
+              <div class="mini-bar">
+                <span style="width:73%"></span>
+              </div>
+              <div class="mini-foot">Agile • QA • Stakeholders</div>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <div class="chart-title">Trend Snapshot</div>
+            <svg class="spark" viewBox="0 0 480 140" role="img" aria-label="Trend chart">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="currentColor" stop-opacity=".25"/>
+                  <stop offset="1" stop-color="currentColor" stop-opacity=".85"/>
+                </linearGradient>
+              </defs>
+              <path class="spark-area" d="M10,120 C70,90 100,95 140,85 C180,75 210,90 250,70 C300,40 330,55 380,35 C420,20 450,40 470,25 L470,130 L10,130 Z"/>
+              <path class="spark-line" d="M10,120 C70,90 100,95 140,85 C180,75 210,90 250,70 C300,40 330,55 380,35 C420,20 450,40 470,25"/>
+              <circle class="spark-dot" cx="470" cy="25" r="5"/>
+            </svg>
+
+            <div class="legend">
+              <div><span class="sw sw1"></span> Reporting quality</div>
+              <div><span class="sw sw2"></span> Decision clarity</div>
+            </div>
+          </div>
+
+          <div class="panel-foot">
+            <span>Focus: requirements → insight → delivery</span>
+            <span class="status">
+              <span class="pulse" aria-hidden="true"></span> available for BA / PM roles
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="container">
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2 class="reveal">Projects</h2>
+        <p class="muted reveal">Case-study style. Clear role. Clear outcome.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card glass reveal">
+          <div class="card-top">
+            <h3>Yatrim Investment (Shark Tank–inspired platform)</h3>
+            <span class="tag">PM • UI/UX</span>
+          </div>
+          <p class="muted">
+            Built an investment matching platform concept connecting investors with companies. Delivered a staging site and improved engagement during testing.
+          </p>
+          <ul class="bullets">
+            <li>Role: Project Manager and UI/UX Designer</li>
+            <li>Outcome: +60% engagement in staging test phases</li>
+            <li>Focus: user flow, clarity, conversion-friendly UI</li>
+          </ul>
+        </article>
+
+        <article class="card glass reveal">
+          <div class="card-top">
+            <h3>Freelancing Projects (Web + Dashboards)</h3>
+            <span class="tag">PM • QA</span>
+          </div>
+          <p class="muted">
+            End-to-end coordination across developers/designers with QA ownership and delivery tracking.
+          </p>
+          <ul class="bullets">
+            <li>Coordinated tasks, timelines, and client updates</li>
+            <li>Handled QA testing and feature validation</li>
+            <li>Delivered business dashboards, e-commerce, workflow optimization</li>
+          </ul>
+          <div class="card-links">
+            <a class="link" href="https://github.com/MANDYNAROLA/portfolio-images" target="_blank" rel="noopener">View visuals</a>
+          </div>
+        </article>
+
+        <article class="card glass reveal">
+          <div class="card-top">
+            <h3>Manhattan Competition 2025</h3>
+            <span class="tag">BA • Viz</span>
+          </div>
+          <p class="muted">
+            Turned datasets into insight-driven visuals and stakeholder-ready narrative.
+          </p>
+          <ul class="bullets">
+            <li>Cleaned/prepared datasets for analysis</li>
+            <li>Built charts (bar/line/heat maps)</li>
+            <li>Summarized insights for decision-making</li>
+          </ul>
+          <div class="card-links">
+            <a class="link" href="https://github.com/MANDYNAROLA/Manhattan-competition-2025" target="_blank" rel="noopener">Repository</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <h2 class="reveal">Skills</h2>
+        <p class="muted reveal">Built around data analysis + business analysis delivery.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card glass reveal">
+          <h3>Technical</h3>
+          <div class="skill">
+            <div class="row"><span>SQL</span><span class="pct">Advanced</span></div>
+            <div class="bar"><span data-bar="82"></span></div>
+          </div>
+          <div class="skill">
+            <div class="row"><span>Excel</span><span class="pct">Strong</span></div>
+            <div class="bar"><span data-bar="78"></span></div>
+          </div>
+          <div class="skill">
+            <div class="row"><span>Power BI</span><span class="pct">Intermediate</span></div>
+            <div class="bar"><span data-bar="70"></span></div>
+          </div>
+          <div class="skill">
+            <div class="row"><span>Python / R</span><span class="pct">Intermediate</span></div>
+            <div class="bar"><span data-bar="66"></span></div>
+          </div>
+        </div>
+
+        <div class="skill-card glass reveal">
+          <h3>Analytics</h3>
+          <ul class="bullets">
+            <li>Data visualization & reporting</li>
+            <li>Statistical analysis (foundations)</li>
+            <li>Business intelligence thinking</li>
+            <li>Trend tracking & insights</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Dashboards</span>
+            <span class="chip">KPIs</span>
+            <span class="chip">Data Cleaning</span>
+            <span class="chip">Storytelling</span>
+          </div>
+        </div>
+
+        <div class="skill-card glass reveal">
+          <h3>Delivery</h3>
+          <ul class="bullets">
+            <li>Project management (Agile workflows)</li>
+            <li>Stakeholder communication</li>
+            <li>Risk management mindset</li>
+            <li>QA testing & validation</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Sprint Planning</span>
+            <span class="chip">Requirements</span>
+            <span class="chip">QA</span>
+            <span class="chip">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="section-head">
+        <h2 class="reveal">Experience</h2>
+        <p class="muted reveal">Internships + project delivery experience.</p>
+      </div>
+
+      <div class="timeline glass reveal">
+        <div class="t-item">
+          <div class="t-dot" aria-hidden="true"></div>
+          <div class="t-content">
+            <div class="t-top">
+              <h3>Cool v Develop — Data Analyst Intern</h3>
+              <span class="t-date">2023</span>
+            </div>
+            <ul class="bullets">
+              <li>Used SQL to pull and clean data for reporting and analysis</li>
+              <li>Built simple Excel dashboards to track trends in large datasets</li>
+              <li>Organized raw data to improve usability and reporting quality</li>
+              <li>Collaborated with developers to connect sources and improve reports</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="t-dot" aria-hidden="true"></div>
+          <div class="t-content">
+            <div class="t-top">
+              <h3>CodeFlixweb — UI/UX Designer (PHP exposure)</h3>
+              <span class="t-date">2023</span>
+            </div>
+            <ul class="bullets">
+              <li>Learned fundamentals of PHP for dynamic web applications</li>
+              <li>Built UI/UX skills using user-centered design principles</li>
+              <li>Worked with agile workflows and tools</li>
+              <li>Improved problem-solving through hands-on tasks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="t-dot" aria-hidden="true"></div>
+          <div class="t-content">
+            <div class="t-top">
+              <h3>Freelance — Project Manager</h3>
+              <span class="t-date">2024</span>
+            </div>
+            <ul class="bullets">
+              <li>Coordinated developers/designers with clear communication</li>
+              <li>Adapted to client needs using agile methods</li>
+              <li>Owned QA testing and feature validation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+      <div class="section-head">
+        <h2 class="reveal">Education</h2>
+        <p class="muted reveal">IT + Business Analytics focus.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card glass reveal">
+          <div class="card-top">
+            <h3>California State University, San Bernardino</h3>
+            <span class="tag">2024–2026</span>
+          </div>
+          <p class="muted">Major: Information and Technology with Business Analytics</p>
+          <ul class="bullets">
+            <li>Data analysis, statistical modeling, and data-driven decision-making</li>
+            <li>Technical + business foundation to solve complex business challenges</li>
+          </ul>
+        </article>
+
+        <article class="card glass reveal">
+          <div class="card-top">
+            <h3>Aditya Silver Oak University, Ahmedabad, India</h3>
+            <span class="tag">2020–2023</span>
+          </div>
+          <p class="muted">Information and Technology (Associate degree/Diploma)</p>
+          <ul class="bullets">
+            <li>GPA: 3.99 / 9.93 CGPA</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Certifications / Achievements -->
+    <section class="section" id="achievements">
+      <div class="section-head">
+        <h2 class="reveal">Certifications & Achievements</h2>
+        <p class="muted reveal">Proof of learning + tool exposure.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card glass reveal">
+          <h3>Cisco</h3>
+          <ul class="bullets">
+            <li>Data Analytics Essentials</li>
+          </ul>
+        </article>
+
+        <article class="card glass reveal">
+          <h3>AWS (Intro courses)</h3>
+          <ul class="bullets">
+            <li>Introduction to Generative AI</li>
+            <li>Introduction to Esri on AWS</li>
+            <li>AWS Cloud Economics for Healthcare</li>
+          </ul>
+        </article>
+
+        <article class="card glass reveal">
+          <h3>Simplilearn</h3>
+          <ul class="bullets">
+            <li>Introduction to Tableau</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2 class="reveal">Contact</h2>
+        <p class="muted reveal">Fast response. Clear communication.</p>
+      </div>
+
+      <div class="contact glass reveal">
+        <div class="contact-item">
+          <div class="label">Email</div>
+          <a class="value" href="mailto:nmanthan670@gmail.com">nmanthan670@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">Phone</div>
+          <div class="value">909-402-7275</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Location</div>
+          <div class="value">Los Angeles, CA</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">GitHub</div>
+          <a class="value" href="https://github.com/MANDYNAROLA" target="_blank" rel="noopener">github.com/MANDYNAROLA</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">© <span id="year"></span> Manthan Narola</div>
+      <div class="muted small">Built with GitHub Pages • HTML/CSS/JS</div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
