@@ -272,3 +272,180 @@ h2{margin:0; font-size:22px}
   .nav-links{display:none}
   .burger{display:inline-block}
 }
+
+/* =========================
+   Gallery (3x3 + Load More)
+   ========================= */
+
+.gallery-toolbar{
+  margin-top:12px;
+  padding:10px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* filter buttons */
+.gbtn{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+  cursor:pointer;
+  font-weight:800;
+  font-size:13px;
+}
+.gbtn:hover{background: rgba(255,255,255,.07); color: var(--text)}
+.gbtn.active{
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border:none;
+  color:#061023;
+}
+
+/* 3 columns desktop, 2 tablet, 1 mobile */
+.gallery-grid{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+@media (max-width: 980px){
+  .gallery-grid{grid-template-columns: repeat(2, 1fr)}
+}
+@media (max-width: 520px){
+  .gallery-grid{grid-template-columns: 1fr}
+}
+
+/* thumbnail card */
+.gitem{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.02);
+  cursor:pointer;
+  aspect-ratio: 1 / 1; /* square box */
+}
+
+.gitem img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition: transform .25s ease, filter .25s ease;
+  filter: saturate(1.05);
+}
+.gitem:hover img{
+  transform: scale(1.06);
+  filter: saturate(1.15);
+}
+
+/* overlay */
+.gmeta{
+  position:absolute;
+  left:10px; right:10px; bottom:10px;
+  padding:8px 10px;
+  border-radius:12px;
+  background: rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(8px);
+}
+:root.light .gmeta{background: rgba(255,255,255,.78)}
+.gtitle{font-weight:900; font-size:12px; color: var(--text)}
+.gtag{margin-top:4px; font-size:11px; color: var(--muted)}
+
+/* Load more area */
+.gallery-more{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+}
+
+/* =========================
+   Lightbox (Slider)
+   ========================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  z-index:200;
+}
+.lightbox.show{display:grid}
+
+.lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.65);
+}
+:root.light .lightbox-backdrop{background: rgba(10,10,20,.45)}
+
+.lightbox-card{
+  position:relative;
+  width:min(920px, 92vw);
+  padding:12px;
+  z-index:1;
+}
+
+.lightbox-card img{
+  width:100%;
+  height:auto;
+  border-radius:14px;
+  border:1px solid var(--line);
+}
+
+.lightbox-card figcaption{
+  padding:10px 4px 2px;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:10px; right:10px;
+  width:40px; height:40px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  font-size:22px;
+  cursor:pointer;
+  z-index:2;
+}
+.lightbox-close:hover{background: rgba(255,255,255,.12)}
+
+/* prev/next arrows */
+.lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  font-size:28px;
+  cursor:pointer;
+  z-index:2;
+  display:grid;
+  place-items:center;
+}
+.lightbox-nav:hover{background: rgba(255,255,255,.14)}
+.lightbox-nav.prev{left:10px}
+.lightbox-nav.next{right:10px}
+
+/* counter */
+.lightbox-counter{
+  position:absolute;
+  top:12px;
+  left:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.08);
+  font-size:12px;
+  color: var(--muted);
+  z-index:2;
+}
