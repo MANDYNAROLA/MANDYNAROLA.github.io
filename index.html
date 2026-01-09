@@ -26,7 +26,9 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
+
       </div>
 
       <div class="nav-actions">
@@ -233,6 +235,38 @@
         </article>
       </div>
     </section>
+    <section id="gallery" class="section">
+  <div class="section-head">
+    <h2 class="reveal">Gallery</h2>
+    <p class="muted reveal">
+      Glimpses of my work, learning journey, collaborations, and progress.
+    </p>
+  </div>
+
+  <div class="gallery-toolbar glass reveal">
+    <button class="gbtn active" data-filter="All">All</button>
+    <button class="gbtn" data-filter="Work">Work</button>
+    <button class="gbtn" data-filter="Data">Data</button>
+    <button class="gbtn" data-filter="People">People</button>
+    <button class="gbtn" data-filter="Life">Life</button>
+  </div>
+
+  <div class="gallery-grid reveal" id="galleryGrid"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <figure class="lightbox-card glass">
+      <button class="lightbox-close" id="lightboxClose">×</button>
+      <img id="lightboxImg" alt="Gallery image" />
+      <figcaption>
+        <div id="lightboxTitle"></div>
+        <div class="muted small" id="lightboxTag"></div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 
     <!-- Skills -->
     <section id="skills" class="section">
@@ -455,3 +489,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
