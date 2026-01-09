@@ -28,7 +28,6 @@
         <a href="#education">Education</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-
       </div>
 
       <div class="nav-actions">
@@ -46,6 +45,7 @@
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
+      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
 
@@ -70,11 +70,9 @@
         <div class="cta reveal">
           <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
           <a class="btn ghost" href="https://github.com/MANDYNAROLA" target="_blank" rel="noopener">GitHub</a>
-          <!-- Replace with your real LinkedIn -->
           <a class="btn ghost" href="#" id="linkedinLink" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
-        <!-- KPI strip -->
         <div class="kpis reveal">
           <div class="kpi glass">
             <div class="kpi-top">
@@ -105,7 +103,6 @@
         </div>
       </div>
 
-      <!-- Data-themed hero panel -->
       <div class="hero-right reveal">
         <div class="panel glass">
           <div class="panel-head">
@@ -120,25 +117,19 @@
           <div class="mini-grid">
             <div class="mini-card">
               <div class="mini-label">Data Prep</div>
-              <div class="mini-bar">
-                <span style="width:82%"></span>
-              </div>
+              <div class="mini-bar"><span style="width:82%"></span></div>
               <div class="mini-foot">SQL • Cleaning • Structuring</div>
             </div>
 
             <div class="mini-card">
               <div class="mini-label">Visualization</div>
-              <div class="mini-bar">
-                <span style="width:76%"></span>
-              </div>
+              <div class="mini-bar"><span style="width:76%"></span></div>
               <div class="mini-foot">Power BI • Excel Dashboards</div>
             </div>
 
             <div class="mini-card">
               <div class="mini-label">Delivery</div>
-              <div class="mini-bar">
-                <span style="width:73%"></span>
-              </div>
+              <div class="mini-bar"><span style="width:73%"></span></div>
               <div class="mini-foot">Agile • QA • Stakeholders</div>
             </div>
           </div>
@@ -165,9 +156,7 @@
 
           <div class="panel-foot">
             <span>Focus: requirements → insight → delivery</span>
-            <span class="status">
-              <span class="pulse" aria-hidden="true"></span> available for BA / PM roles
-            </span>
+            <span class="status"><span class="pulse" aria-hidden="true"></span> available for BA / PM roles</span>
           </div>
         </div>
       </div>
@@ -235,38 +224,48 @@
         </article>
       </div>
     </section>
+
+    <!-- Gallery -->
     <section id="gallery" class="section">
-  <div class="section-head">
-    <h2 class="reveal">Gallery</h2>
-    <p class="muted reveal">
-      Glimpses of my work, learning journey, collaborations, and progress.
-    </p>
-  </div>
+      <div class="section-head">
+        <h2 class="reveal">Gallery</h2>
+        <p class="muted reveal">Glimpses of my work, learning journey, collaborations, and progress.</p>
+      </div>
 
-  <div class="gallery-toolbar glass reveal">
-    <button class="gbtn active" data-filter="All">All</button>
-    <button class="gbtn" data-filter="Work">Work</button>
-    <button class="gbtn" data-filter="Data">Data</button>
-    <button class="gbtn" data-filter="People">People</button>
-    <button class="gbtn" data-filter="Life">Life</button>
-  </div>
+      <div class="gallery-toolbar glass reveal">
+        <button class="gbtn active" data-filter="All">All</button>
+        <button class="gbtn" data-filter="Work">Work</button>
+        <button class="gbtn" data-filter="Data">Data</button>
+        <button class="gbtn" data-filter="People">People</button>
+        <button class="gbtn" data-filter="Life">Life</button>
+      </div>
 
-  <div class="gallery-grid reveal" id="galleryGrid"></div>
+      <div class="gallery-grid reveal" id="galleryGrid"></div>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-backdrop"></div>
-    <figure class="lightbox-card glass">
-      <button class="lightbox-close" id="lightboxClose">×</button>
-      <img id="lightboxImg" alt="Gallery image" />
-      <figcaption>
-        <div id="lightboxTitle"></div>
-        <div class="muted small" id="lightboxTag"></div>
-      </figcaption>
-    </figure>
-  </div>
-</section>
+      <div class="gallery-more reveal">
+        <button class="btn ghost" id="loadMoreBtn">Load more</button>
+      </div>
 
+      <!-- Lightbox (slider) -->
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-backdrop" data-close="1"></div>
+
+        <figure class="lightbox-card glass">
+          <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+
+          <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous">‹</button>
+          <button class="lightbox-nav next" id="lightboxNext" aria-label="Next">›</button>
+
+          <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+
+          <img id="lightboxImg" alt="Gallery image" />
+          <figcaption>
+            <div id="lightboxTitle"></div>
+            <div class="muted small" id="lightboxTag"></div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
     <!-- Skills -->
     <section id="skills" class="section">
@@ -489,4 +488,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
