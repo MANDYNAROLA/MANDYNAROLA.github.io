@@ -514,28 +514,46 @@ h2{margin:0; font-size:22px}
   min-height: 120px;
 }
 
-/* Status text */
-.status {
+/* Status text (scoped) */
+.contact-form .status{
   margin-top: 6px;
   font-size: 13px;
   opacity: 0.85;
+  display:block;
 }
 
 /* Contact actions (Copy Email button area) */
-.contact-actions {
+.contact-actions{
   margin: 12px 0 18px;
-  display: flex;
-  gap: 10px;
+  display:flex;
+  gap:10px;
 }
 
-/* Sub*
-.contact-form .btn {
+/* Submit button polish */
+.contact-form .btn{
   background: linear-gradient(135deg, #6ea8ff, #4c7dff);
   color: #0b1220;
   border: none;
 }
-
-.contact-form .btn:hover {
+.contact-form .btn:hover{
   transform: translateY(-1px);
   box-shadow: 0 14px 30px rgba(76,125,255,0.4);
+}
+
+/* ===== Light mode overrides (ADD AT VERY END) ===== */
+:root.light .contact-form{
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(11,18,32,.12);
+}
+
+:root.light .contact-form input,
+:root.light .contact-form textarea{
+  background: rgba(255,255,255,0.75);
+  color: #0b1220;
+  border: 1px solid rgba(11,18,32,.18);
+}
+
+:root.light .contact-form input::placeholder,
+:root.light .contact-form textarea::placeholder{
+  color: rgba(11,18,32,.45);
 }
