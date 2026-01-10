@@ -449,3 +449,16 @@ h2{margin:0; font-size:22px}
   color: var(--muted);
   z-index:2;
 }
+.contact-form { display: grid; gap: 12px; max-width: 520px; }
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: inherit;
+}
+.contact-form label { display: grid; gap: 6px; font-size: 14px; }
+.status { margin: 6px 0 0; font-size: 14px; opacity: 0.9; }
+.contact-actions { margin: 10px 0 14px; }
+
