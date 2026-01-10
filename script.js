@@ -283,6 +283,52 @@ if (linkedin) {
   linkedin.target = "_blank";
 }
 
+// ===== Copy Email =====
+document.getElementById("copyEmailBtn")?.addEventListener("click", async () => {
+  const email = "nmanthan670@gmail.com";
+  try {
+    await navigator.clipboard.writeText(email);
+    alert("Email copied.");
+  } catch {
+    prompt("Copy email:", email);
+  }
+});
+
+// ===== Contact form (Formspree) =====
+const form = document.getElementById("contactForm");
+const statusEl = document.getElementById("contactStatus");
+
+// Create a Formspree form and paste your endpoint here:
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+form?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  statusEl.textContent = "Sending...";
+
+  const fd = new FormData(form);
+
+  // Honeypot filled -> treat as spam
+  if (fd.get("_gotcha")) return;
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: fd,
+    });
+
+    if (res.ok) {
+      form.reset();
+      statusEl.textContent = "Sent. I’ll reply fast.";
+    } else {
+      statusEl.textContent = "Failed to send. Use email above.";
+    }
+  } catch {
+    statusEl.textContent = "Network error. Use email above.";
+  }
+});
+
 //www.linkedin.com/in/manthan-narola
+
 
 
