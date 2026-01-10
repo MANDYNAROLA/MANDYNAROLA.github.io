@@ -449,16 +449,93 @@ h2{margin:0; font-size:22px}
   color: var(--muted);
   z-index:2;
 }
-.contact-form { display: grid; gap: 12px; max-width: 520px; }
-.contact-form input, .contact-form textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: transparent;
-  color: inherit;
+/* ===== Contact Form (Glass / Dark UI) ===== */
+.contact-form {
+  display: grid;
+  gap: 14px;
+  max-width: 520px;
+  padding: 22px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
 }
-.contact-form label { display: grid; gap: 6px; font-size: 14px; }
-.status { margin: 6px 0 0; font-size: 14px; opacity: 0.9; }
-.contact-actions { margin: 10px 0 14px; }
 
+/* Labels */
+.contact-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Inputs & Textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 14px;
+  transition: border 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* Placeholder */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+/* Focus glow */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(120,180,255,0.7);
+  background: rgba(0,0,0,0.55);
+  box-shadow:
+    0 0 0 3px rgba(120,180,255,0.18),
+    0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Textarea */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Status text */
+.status {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* Contact actions (Copy Email button area) */
+.contact-actions {
+  margin: 12px 0 18px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Sub*
+.contact-form .btn {
+  background: linear-gradient(135deg, #6ea8ff, #4c7dff);
+  color: #0b1220;
+  border: none;
+}
+
+.contact-form .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(76,125,255,0.4);
+}
