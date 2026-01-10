@@ -480,60 +480,60 @@
         </article>
       </div>
     </section>
+<!-- Contact -->
+<section id="contact" class="section">
+  <div class="section-head">
+    <h2 class="reveal">Contact</h2>
+    <p class="muted reveal">Fast response. Clear communication.</p>
+  </div>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section-head">
-        <h2 class="reveal">Contact</h2>
-        <p class="muted reveal">Fast response. Clear communication.</p>
-      </div>
+  <div class="contact glass reveal">
+    <div class="contact-item">
+      <div class="label">Email</div>
+      <a class="value" href="mailto:nmanthan670@gmail.com">nmanthan670@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <div class="label">Phone</div>
+      <div class="value">909-402-7275</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">Location</div>
+      <div class="value">Los Angeles, CA</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">GitHub</div>
+      <a class="value" href="https://github.com/MANDYNAROLA" target="_blank" rel="noopener">github.com/MANDYNAROLA</a>
+    </div>
+  </div>
 
-      <div class="contact glass reveal">
-        <div class="contact-item">
-          <div class="label">Email</div>
-          <a class="value" href="mailto:nmanthan670@gmail.com">nmanthan670@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <div class="label">Phone</div>
-          <div class="value">909-402-7275</div>
-        </div>
-        <div class="contact-item">
-          <div class="label">Location</div>
-          <div class="value">Los Angeles, CA</div>
-        </div>
-        <div class="contact-item">
-          <div class="label">GitHub</div>
-          <a class="value" href="https://github.com/MANDYNAROLA" target="_blank" rel="noopener">github.com/MANDYNAROLA</a>
-        </div>
-      </div>
-    </section>
-    <div class="contact-actions">
-  <button class="btn ghost" id="copyEmailBtn" type="button">Copy Email</button>
-</div>
+  <!-- NEW: Actions + Form (KEEP INSIDE SECTION) -->
+  <div class="contact-actions reveal">
+    <button class="btn ghost" id="copyEmailBtn" type="button">Copy Email</button>
+  </div>
 
-<form id="contactForm" class="contact-form">
-  <!-- Honeypot (spam trap) -->
-  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+  <form id="contactForm" class="contact-form glass reveal">
+    <!-- Honeypot (spam trap) -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-  <label>
-    Name
-    <input name="name" required />
-  </label>
+    <label>
+      Name
+      <input name="name" placeholder="Your name" required />
+    </label>
 
-  <label>
-    Email
-    <input name="email" type="email" required />
-  </label>
+    <label>
+      Email
+      <input name="email" type="email" placeholder="you@email.com" required />
+    </label>
 
-  <label>
-    Message
-    <textarea name="message" rows="5" required></textarea>
-  </label>
+    <label>
+      Message
+      <textarea name="message" rows="5" placeholder="What can I help with?" required></textarea>
+    </label>
 
-  <button class="btn" type="submit">Send Message</button>
-  <p id="contactStatus" class="status" aria-live="polite"></p>
-</form>
-
+    <button class="btn primary" type="submit">Send Message</button>
+    <p id="contactStatus" class="status" aria-live="polite"></p>
+  </form>
+</section>
 
     <footer class="footer">
       <div class="muted">© <span id="year"></span> Manthan Narola</div>
@@ -541,9 +541,11 @@
     </footer>
   </main>
 
-  <script src="script.js"></script>
+ <script src="script.js" defer></script>
+
 </body>
 </html>
+
 
 
 
