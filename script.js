@@ -3,7 +3,10 @@ const qs = (s, el = document) => el.querySelector(s);
 const qsa = (s, el = document) => [...el.querySelectorAll(s)];
 
 // ===== Stat counter animation =====
-const counters = document.querySelectorAll("[data-count]");
+const counters = document.querySelectorAll(".count").forEach((el) => {
+  const to = Number(el.getAttribute("data-to") || "0");
+  el.textContent = "0";
+});
 
 const animateCounter = (el) => {
   const target = Number(el.dataset.count);
@@ -328,4 +331,5 @@ if (form) {
     }
   });
 }
+
 
