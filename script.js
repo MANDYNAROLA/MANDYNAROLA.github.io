@@ -2,6 +2,38 @@
 const qs = (s, el = document) => el.querySelector(s);
 const qsa = (s, el = document) => [...el.querySelectorAll(s)];
 
+// ===== Stat counter animation =====
+const counters = document.querySelectorAll("[data-count]");
+
+const animateCounter = (el) => {
+  const target = Number(el.dataset.count);
+  const duration = 900;
+  const start = performance.now();
+
+  const step = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(p * target).toString();
+    if (p < 1) requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
+};
+
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting && !e.target.dataset.done) {
+        e.target.dataset.done = "1";
+        animateCounter(e.target);
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+
+counters.forEach((c) => io.observe(c));
+
+
 // ===== Year =====
 qs("#year").textContent = new Date().getFullYear();
 
@@ -45,33 +77,6 @@ const io = new IntersectionObserver(
 revealEls.forEach((el) => io.observe(el));
 
 // ===== Animated counters =====
-function animateCount(el, to) {
-  const dur = 900;
-  const start = performance.now();
-  const from = 0;
-
-  function tick(t) {
-    const p = Math.min(1, (t - start) / dur);
-    const v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
-    el.textContent = v.toString();
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-const counterIO = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const to = Number(el.getAttribute("data-to") || "0");
-      if (el.dataset.done) return;
-      el.dataset.done = "1";
-      animateCount(el, to);
-    });
-  },
-  { threshold: 0.5 }
-);
 
 qsa(".count").forEach((el) => counterIO.observe(el));
 
@@ -279,4 +284,5 @@ if (linkedin) {
 }
 
 //www.linkedin.com/in/manthan-narola
+
 
