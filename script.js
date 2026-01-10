@@ -293,42 +293,39 @@ document.getElementById("copyEmailBtn")?.addEventListener("click", async () => {
     prompt("Copy email:", email);
   }
 });
-
 // ===== Contact form (Formspree) =====
 const form = document.getElementById("contactForm");
 const statusEl = document.getElementById("contactStatus");
 
-// Create a Formspree form and paste your endpoint here:
+// Put your real Formspree URL here (not YOUR_FORM_ID)
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
-form?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  statusEl.textContent = "Sending...";
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (statusEl) statusEl.textContent = "Sending...";
 
-  const fd = new FormData(form);
+    const fd = new FormData(form);
 
-  // Honeypot filled -> treat as spam
-  if (fd.get("_gotcha")) return;
+    // Honeypot filled -> treat as spam
+    if (fd.get("_gotcha")) return;
 
-  try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: fd,
-    });
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: fd,
+      });
 
-    if (res.ok) {
-      form.reset();
-      statusEl.textContent = "Sent. I’ll reply fast.";
-    } else {
-      statusEl.textContent = "Failed to send. Use email above.";
+      if (res.ok) {
+        form.reset();
+        if (statusEl) statusEl.textContent = "Sent. I’ll reply fast.";
+      } else {
+        if (statusEl) statusEl.textContent = "Failed to send. Use email above.";
+      }
+    } catch {
+      if (statusEl) statusEl.textContent = "Network error. Use email above.";
     }
-  } catch {
-    statusEl.textContent = "Network error. Use email above.";
-  }
-});
-
-//www.linkedin.com/in/manthan-narola
-
-
+  });
+}
 
