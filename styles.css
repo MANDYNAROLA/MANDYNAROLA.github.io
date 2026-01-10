@@ -557,3 +557,9 @@ h2{margin:0; font-size:22px}
 :root.light .contact-form textarea::placeholder{
   color: rgba(11,18,32,.45);
 }
+/* Fallback: if JS doesn't run, content should still be visible */
+.no-js .reveal{
+  opacity: 1 !important;
+  transform: none !important;
+}
+
