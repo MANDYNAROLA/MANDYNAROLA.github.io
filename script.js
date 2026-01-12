@@ -291,15 +291,16 @@ form?.addEventListener("submit", async (e) => {
       headers: { Accept: "application/json" },
       body: fd,
     });
-
-    if (res.ok) {
-      form.reset();
-      if (statusEl) statusEl.textContent = "Sent. I’ll reply fast.";
-    } else {
+if (res.ok) {
+  form.reset();
+  if (statusEl) statusEl.textContent = "Message sent successfully. I’ll get back to you shortly.";
+}
+   else {
       if (statusEl) statusEl.textContent = "Failed to send. Use email above.";
     }
   } catch {
     if (statusEl) statusEl.textContent = "Network error. Use email above.";
   }
 });
+
 
