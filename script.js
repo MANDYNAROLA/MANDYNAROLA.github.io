@@ -276,7 +276,7 @@ qs("#copyEmailBtn")?.addEventListener("click", async () => {
 // ===== Contact form (Formspree) =====
 const form = qs("#contactForm");
 const statusEl = qs("#contactStatus");
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; // replace
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzddpozj";
 
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -302,3 +302,4 @@ form?.addEventListener("submit", async (e) => {
     if (statusEl) statusEl.textContent = "Network error. Use email above.";
   }
 });
+
